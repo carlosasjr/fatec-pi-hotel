@@ -30,66 +30,62 @@
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="../../assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
-    <!-- Google Font -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
-    <asp:ContentPlaceHolder id="head" runat="server">
-
+    <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<body>
-    <body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini">
     <div id="container">
         <header id="header" class="main-header">
-                    <!-- Logo -->
-                    <a href="#" class="logo">
-                        <!-- mini logo for sidebar mini 50x50 pixels -->
-                        <span class="logo-mini"><b>H</b>ED</span>
-                        <!-- logo for regular state and mobile devices -->
-                        <span class="logo-lg"><b>Hotel</b>Eldorado</span>
-                    </a>
-                    <!-- Header Navbar: style can be found in header.less -->
-                    <nav class="navbar navbar-static-top">
-                        <!-- Sidebar toggle button-->
-                        <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-                            <span class="sr-only">Toggle navigation</span>
-                        </a>
+            <!-- Logo -->
+            <a href="#" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>H</b>ED</span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>Hotel</b>Eldorado</span>
+            </a>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
 
-                        <div class="navbar-custom-menu">
-                            <ul class="nav navbar-nav">
-                                <!-- User Account: style can be found in dropdown.less -->
-                                <li class="dropdown user user-menu">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                        <img src="../../assets/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                                        <span class="hidden-xs">Usuário</span>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <!-- User image -->
-                                        <li class="user-header">
-                                            <img src="../../assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <!-- User Account: style can be found in dropdown.less -->
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="../../assets/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                                <span class="hidden-xs">Usuário</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                <li class="user-header">
+                                    <img src="../../assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
-                                            <p>
-                                                Grupo 1 - Fatec
+                                    <p>
+                                        Grupo 1 - Fatec
 
                                                 <small>Fatec - Guaratinguetá - 3º GTI</small>
-                                            </p>
-                                        </li>
+                                    </p>
+                                </li>
 
-                                        <!-- Menu Footer-->
-                                        <li class="user-footer">
-                                            <div class="pull-left">
-                                                <a href="#" class="btn btn-default btn-flat">Profile</a>
-                                            </div>
-                                            <div class="pull-right">
-                                                <a href="#" class="btn btn-default btn-flat">Sign out</a>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                    </div>
                                 </li>
                             </ul>
-                        </div>
-                    </nav>
-                </header>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
 
         <aside class="main-sidebar">
             <!-- sidebar: style can be found in sidebar.less -->
@@ -171,14 +167,14 @@
 
                                     <li class="treeview">
                                         <a href="#">
-                                            <i class="fa fa-circle-o"></i> Hospede
+                                            <i class="fa fa-circle-o"></i>Hospede
                                             <span class="pull-right-container">
                                                 <i class="fa fa-angle-left pull-right"></i>
                                             </span>
                                         </a>
                                         <ul class="treeview-menu">
-                                            <li><a href="#"><i class="fa fa-circle-o"></i> Tipo de Pessoa</a></li>
-                                            <li><a href="#"><i class="fa fa-circle-o"></i> Pessoa</a></li>
+                                            <li><a href="#"><i class="fa fa-circle-o"></i>Tipo de Pessoa</a></li>
+                                            <li><a href="#"><i class="fa fa-circle-o"></i>Pessoa</a></li>
                                         </ul>
                                     </li>
 
@@ -196,13 +192,12 @@
         </aside>
 
 
-    <form id="form1" runat="server">
-    <div>        
-        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
-        
-        </asp:ContentPlaceHolder>
-    </div>
-    </form>
+        <form id="form1" runat="server">
+            <div>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </form>
 
     </div>
 
