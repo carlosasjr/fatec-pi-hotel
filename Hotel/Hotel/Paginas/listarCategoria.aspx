@@ -11,18 +11,34 @@
     <div class="content-wrapper">
         <!-- Identificação da página, altere esses dados para a página correspondente. -->
         <section class="content-header">
-            <h1>Dashboard
-            <small>Control panel</small>
+            <h1>Categorias
+            <small>Controle de Categorias</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="index.aspx"><i class="fa fa-dashboard"></i>Home</a></li>
-                <li class="active">Dashboard</li>
+                <li class="active">Categorias</li>
             </ol>
         </section>
 
         <section class="content">
            <!-- Seu conteúdo vai aqui -->
+            <asp:LinkButton ID="lbCadastrar" runat="server" CssClass="btn btn-primary" OnClick="lbCadastrar_Click">Cadastrar</asp:LinkButton>
+                <br />
+                 <br />
+                <asp:GridView ID="gdvCategoria" CssClass="table table-hover table-success tabela" runat="server" AutoGenerateColumns="false" OnRowCommcat="gdvCategoria_RowCommand" >
+                    <Columns>
+                        <asp:BoundField HeaderText="ID" DataField="cat_id" />
+                        <asp:BoundField HeaderText="Descrição" DataField="cat_descricao" />
+                        <asp:BoundField HeaderText="Abreviacão" DataField="cat_abreviacao" />
 
+                        <asp:TemplateField HeaderText="Ações">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="lbAlterar" runat="server" CssClass="btn btn-dark" CommandName="Alterar" CommandArgument='<%# Bind("cat_id") %>'>Alterar</asp:LinkButton>
+                                <asp:LinkButton ID="lbDeletar" runat="server" CssClass="btn btn-danger" CommandName="Deletar" CommandArgument='<%# Bind("cat_id") %>'>Deletar</asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
+                </asp:GridView>
 
 
         </section>

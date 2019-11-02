@@ -161,10 +161,9 @@
                                     </span>
                                 </a>
                                 <ul class="treeview-menu">
-                                    <li><a href="#"><i class="fa fa-circle-o"></i>Andar</a></li>
-                                    <li><a href="#"><i class="fa fa-circle-o"></i>Classificação</a></li>
+                                    <li><a href="../../Paginas/listarCategoria.aspx"><i class="fa fa-circle-o"></i>Categoria</a></li>
                                     <li><a href="#"><i class="fa fa-circle-o"></i>Tarifário</a></li>
-                                    <li><a href="#"><i class="fa fa-circle-o"></i>Quartos</a></li>
+                                    <li><a href="../../Paginas/listarApartamentos.aspx"><i class="fa fa-circle-o"></i>Apartamentos</a></li>
 
                                     <li class="treeview">
                                         <a href="#">

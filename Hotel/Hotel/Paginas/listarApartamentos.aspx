@@ -22,7 +22,22 @@
 
         <section class="content">
            <!-- Seu conteúdo vai aqui -->
-
+            <asp:LinkButton ID="lbCadastrar" runat="server" CssClass="btn btn-primary" OnClick="lbCadastrar_Click">Cadastrar</asp:LinkButton>
+                <br />
+                 <br />
+                <asp:GridView ID="gdvApartamento" CssClass="table table-hover table-success tabela" runat="server" AutoGenerateColumns="false" OnRowCommand="gdvApartamento_RowCommand">
+                    <Columns>
+                        <asp:BoundField HeaderText="Id" DataField="apt_id" />
+                        <asp:BoundField HeaderText="Descricão" DataField="apt_descricao" />
+                        <asp:BoundField HeaderText="Numero" DataField="apt_numero" />
+                        <asp:TemplateField HeaderText="Ações">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="lbAlterar" runat="server" CssClass="btn btn-dark" CommandName="Alterar" CommandArgument='<%# Bind("apt_id") %>'>Alterar</asp:LinkButton>
+                                <asp:LinkButton ID="lbDeletar" runat="server" CssClass="btn btn-danger" CommandName="Deletar" CommandArgument='<%# Bind("apt_id") %>'>Deletar</asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
+                </asp:GridView>
 
 
         </section>

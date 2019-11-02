@@ -24,8 +24,8 @@ public class CategoriaDB
             if (categoria.id == 0)
             {
                 string sql = "INSERT INTO cat_catapartamento(htl_id,cat_descricao,cat_qtdapartamento,cat_abreviacao,cat_qtdacomodacoes," +
-                    "cat_ativo) VALUES (?htl_id,?cat_descricao,?cat_qtdapartamento,?cat_abreviacao,?cat_qtdacomodacoes," +
-                    "?cat_ativo)";
+                    "ativo) VALUES (?htl_id,?cat_descricao,?cat_qtdapartamento,?cat_abreviacao,?cat_qtdacomodacoes," +
+                    "?ativo)";
 
                 objCommand = Mapped.Comando(sql, objConexao);
 
@@ -34,7 +34,7 @@ public class CategoriaDB
                 objCommand.Parameters.Add(Mapped.Parametro("?cat_qtdapartamento", categoria.qtdapartamento));
                 objCommand.Parameters.Add(Mapped.Parametro("?cat_abreviacao", categoria.abreviacao));
                 objCommand.Parameters.Add(Mapped.Parametro("?cat_qtdacomodacoes", categoria.qtdacomodacoes));
-                objCommand.Parameters.Add(Mapped.Parametro("?cat_ativo", categoria.ativo));
+                objCommand.Parameters.Add(Mapped.Parametro("?ativo", categoria.ativo));
 
             }
             else
@@ -45,7 +45,7 @@ public class CategoriaDB
                              "cat_qtdapartamento = ?cat_qtdapartamento, " +
                              "cat_abreviacao = ?cat_abreviacao, " +
                              "cat_qtdacomodacoes = ?cat_qtdacomodacoes, " +
-                             "cat_ativo = ?cat_ativo, " +
+                             "ativo = ?ativo, " +
 
                              "WHERE cat_id = ?id";
 
@@ -56,7 +56,7 @@ public class CategoriaDB
                 objCommand.Parameters.Add(Mapped.Parametro("?cat_qtdapartamento", categoria.qtdapartamento));
                 objCommand.Parameters.Add(Mapped.Parametro("?cat_abreviacao", categoria.abreviacao));
                 objCommand.Parameters.Add(Mapped.Parametro("?cat_qtdacomodacoes", categoria.qtdacomodacoes));
-                objCommand.Parameters.Add(Mapped.Parametro("?cat_ativo", categoria.ativo));
+                objCommand.Parameters.Add(Mapped.Parametro("?ativo", categoria.ativo));
 
 
                 objCommand.Parameters.Add(Mapped.Parametro("?id", categoria.id));
@@ -82,6 +82,29 @@ public class CategoriaDB
 
         return retorno;
     }
+
+    public static bool Delete(int id)
+    {
+        System.Data.IDbConnection objConexao;
+        System.Data.IDbCommand objCommand;
+
+        string sql = "DELETE FROM cat_categoria WHERE cat_id = ?id";
+
+        objConexao = Mapped.Conexao();
+        objCommand = Mapped.Comando(sql, objConexao);
+
+        objCommand.Parameters.Add(Mapped.Parametro("?id", id));
+
+        objCommand.ExecuteNonQuery();
+        objConexao.Close();
+        objCommand.Dispose();
+        objConexao.Dispose();
+
+        return true;
+    }
+
+
+
     public static DataSet SelectAll()
     {
         DataSet ds = new DataSet();
@@ -92,9 +115,9 @@ public class CategoriaDB
 
         objConexao = Mapped.Conexao();
 
-        string sql = "SELECT * FROM cat_catapartamento WHERE cat_ativo = 1";
+        string sql = "SELECT * FROM cat_catapartamento WHERE ativo = ?ativo";
         objCommand = Mapped.Comando(sql, objConexao);
-
+        objCommand.Parameters.Add(Mapped.Parametro("?ativo", 1));
         objDataAdapter = Mapped.Adapter(objCommand);
         objDataAdapter.Fill(ds);
 
@@ -133,7 +156,7 @@ public class CategoriaDB
             obj.qtdapartamento = Convert.ToInt32(objDataReader["cat_qtdapartamento"]);
             obj.abreviacao = Convert.ToString(objDataReader["cat_abreviacao"]);
             obj.qtdacomodacoes = Convert.ToInt32(objDataReader["cat`_qtdacomodacoes"]);
-            obj.ativo = Convert.ToInt32(objDataReader["cat_ativo"]);
+            obj.ativo = Convert.ToInt32(objDataReader["ativo"]);
 
         }
 

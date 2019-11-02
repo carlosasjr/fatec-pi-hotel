@@ -105,6 +105,27 @@ public class ApartamentoDB
         return retorno;
     }
 
+    public static bool Delete(int id)
+    {
+        System.Data.IDbConnection objConexao;
+        System.Data.IDbCommand objCommand;
+
+        string sql = "DELETE FROM apt_apartamento WHERE apt_id = ?id";
+
+        objConexao = Mapped.Conexao();
+        objCommand = Mapped.Comando(sql, objConexao);
+
+        objCommand.Parameters.Add(Mapped.Parametro("?id", id));
+
+        objCommand.ExecuteNonQuery();
+        objConexao.Close();
+        objCommand.Dispose();
+        objConexao.Dispose();
+
+        return true;
+    }
+
+    
     public static DataSet SelectAll()
     {
         DataSet ds = new DataSet();
