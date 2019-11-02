@@ -29,8 +29,6 @@ public class HotelDB
                  objCommand = Mapped.Comando(sql, objConexao);
 
                  objCommand.Parameters.Add(Mapped.Parametro("?nome", hotel.razao));
-
-
             }
             else
             {

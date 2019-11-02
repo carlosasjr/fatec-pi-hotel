@@ -34,11 +34,5 @@ namespace Hotel.Classes
         public Estado estado;
         public Cidade cidade;
             
-
-    public Hotel()
-        {
-  
-
-        }
     }
 }

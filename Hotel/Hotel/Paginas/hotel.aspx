@@ -23,7 +23,6 @@
 
         <section class="content">
             <!-- Seu conteúdo vai aqui -->
-
             <div class="row">
                 <div class="col-md-11">
                     <!-- DADOS PRINCIPAIS -->
@@ -97,7 +96,6 @@
                     <!-- /.box box-default -->
                 </div>
             </div>
-
 
             <div class="row">
                 <div class="col-md-11">

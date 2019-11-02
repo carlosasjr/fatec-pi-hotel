@@ -1,0 +1,26 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+/// <summary>
+/// Summary description for Municipio
+/// </summary>
+/// 
+
+namespace Hotel.Classes
+{
+    public class Municipio
+    {
+        public Estado uf;
+        public string codibge;
+        public string nome;
+
+        public Municipio()
+        {
+            //
+            // TODO: Add constructor logic here
+            //
+        }
+    }
+}
