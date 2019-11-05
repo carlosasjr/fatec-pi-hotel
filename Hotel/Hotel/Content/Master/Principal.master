@@ -32,7 +32,6 @@
 
 
     <asp:ContentPlaceHolder ID="head" runat="server">
-
     </asp:ContentPlaceHolder>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -58,7 +57,8 @@
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <img src="../../assets/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                                <span class="hidden-xs">Usuário</span>
+                                <span class="hidden-xs">
+                                    <asp:Label runat="server" Visible="true" ID="lbUsuarioLogado"></asp:Label></span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
@@ -74,11 +74,10 @@
 
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
-                                    <div class="pull-left">
-                                        <a href="#" class="btn btn-default btn-flat">Profile</a>
-                                    </div>
                                     <div class="pull-right">
-                                        <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                        <a href="../../Paginas/sair.aspx">Sair    
+                                            <span class="hidden-xs"></span>
+                                        </a>
                                     </div>
                                 </li>
                             </ul>
@@ -161,23 +160,10 @@
                                     </span>
                                 </a>
                                 <ul class="treeview-menu">
-                                    <li><a href="../../Paginas/listarCategoria.aspx"><i class="fa fa-circle-o"></i>Categoria</a></li>
+                                    <li><a href="../../Paginas/listarCategoria.aspx"><i class="fa fa-circle-o"></i>Categorias</a></li>
                                     <li><a href="#"><i class="fa fa-circle-o"></i>Tarifário</a></li>
                                     <li><a href="../../Paginas/listarApartamentos.aspx"><i class="fa fa-circle-o"></i>Apartamentos</a></li>
-
-                                    <li class="treeview">
-                                        <a href="#">
-                                            <i class="fa fa-circle-o"></i>Hospede
-                                            <span class="pull-right-container">
-                                                <i class="fa fa-angle-left pull-right"></i>
-                                            </span>
-                                        </a>
-                                        <ul class="treeview-menu">
-                                            <li><a href="#"><i class="fa fa-circle-o"></i>Tipo de Pessoa</a></li>
-                                            <li><a href="#"><i class="fa fa-circle-o"></i>Pessoa</a></li>
-                                        </ul>
-                                    </li>
-
+                                    <li><a href="../../Paginas/listarHospede.aspx"><i class="fa fa-circle-o"></i>Hospedes</a></li>
                                 </ul>
                             </li>
 
@@ -195,7 +181,6 @@
         <form id="form1" runat="server">
             <div>
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                    
                 </asp:ContentPlaceHolder>
             </div>
         </form>

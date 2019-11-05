@@ -35,6 +35,7 @@ public class CategoriaDB
                 objCommand.Parameters.Add(Mapped.Parametro("?cat_abreviacao", categoria.abreviacao));
                 objCommand.Parameters.Add(Mapped.Parametro("?cat_qtdacomodacoes", categoria.qtdacomodacoes));
                 objCommand.Parameters.Add(Mapped.Parametro("?ativo", categoria.ativo));
+
             }
             else
             {
@@ -56,6 +57,7 @@ public class CategoriaDB
                 objCommand.Parameters.Add(Mapped.Parametro("?cat_abreviacao", categoria.abreviacao));
                 objCommand.Parameters.Add(Mapped.Parametro("?cat_qtdacomodacoes", categoria.qtdacomodacoes));
                 objCommand.Parameters.Add(Mapped.Parametro("?ativo", categoria.ativo));
+
 
                 objCommand.Parameters.Add(Mapped.Parametro("?id", categoria.id));
             }
@@ -116,7 +118,6 @@ public class CategoriaDB
         string sql = "SELECT * FROM cat_catapartamento WHERE ativo = ?ativo";
         objCommand = Mapped.Comando(sql, objConexao);
         objCommand.Parameters.Add(Mapped.Parametro("?ativo", 1));
-
         objDataAdapter = Mapped.Adapter(objCommand);
         objDataAdapter.Fill(ds);
 
@@ -154,12 +155,7 @@ public class CategoriaDB
             obj.descricao = Convert.ToString(objDataReader["cat_descricao"]);
             obj.qtdapartamento = Convert.ToInt32(objDataReader["cat_qtdapartamento"]);
             obj.abreviacao = Convert.ToString(objDataReader["cat_abreviacao"]);
-<<<<<<< HEAD
-            obj.qtdacomodacoes = Convert.ToInt32(objDataReader["cat`_qtdacomodacoes"]);
-
-=======
             obj.qtdacomodacoes = Convert.ToInt32(objDataReader["cat_qtdacomodacoes"]);
->>>>>>> 9cffa4d89c508058942c9e0330c77744e5f70562
             obj.ativo = Convert.ToInt32(objDataReader["ativo"]);
 
         }

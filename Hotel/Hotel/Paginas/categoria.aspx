@@ -1,12 +1,12 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Content/Master/Principal.master" AutoEventWireup="true" CodeFile="apartamento.aspx.cs" Inherits="Paginas_Default3" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Content/Master/Principal.master" AutoEventWireup="true" CodeFile="categoria.aspx.cs" Inherits="Paginas_Default3" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-  <!-- Se precisar, coloque os links para seus css aqui -->
-  <!-- BootStrap já está na pagina master, então é só usar aqui... -->
+    <!-- Se precisar, coloque os links para seus css aqui -->
+    <!-- BootStrap já está na pagina master, então é só usar aqui... -->
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Identificação da página, altere esses dados para a página correspondente. -->
@@ -83,5 +83,8 @@
 
     </div>
 
+
+
+    <!-- Se precisar, coloque os links scripts js aqui -->
 </asp:Content>
 

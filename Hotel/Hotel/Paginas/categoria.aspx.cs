@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-﻿using System;
-=======
 ﻿using Hotel.Classes;
 using System;
->>>>>>> 0c6defb6cd65146bf57810ee709b59cfbbad8816
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -32,8 +28,6 @@ public partial class Paginas_Default3 : System.Web.UI.Page
             }
         }
     }
-<<<<<<< HEAD
-=======
 
     protected void btnSalvar_Click(object sender, EventArgs e)
     {
@@ -82,5 +76,4 @@ public partial class Paginas_Default3 : System.Web.UI.Page
 
     
 }
->>>>>>> 0c6defb6cd65146bf57810ee709b59cfbbad8816
 }

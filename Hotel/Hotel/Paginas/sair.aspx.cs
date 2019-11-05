@@ -9,6 +9,9 @@ public partial class Paginas_Default3 : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        Session.Abandon();
+        Session.Clear();
+        Session.RemoveAll();
+        Response.Redirect("/Paginas/login.aspx");
     }
 }

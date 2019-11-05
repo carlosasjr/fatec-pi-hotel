@@ -11,12 +11,12 @@
     <div class="content-wrapper">
         <!-- Identificação da página, altere esses dados para a página correspondente. -->
         <section class="content-header">
-            <h1>Dashboard
-            <small>Control panel</small>
+            <h1>Apartamentos
+            <small>Controle de Apartamentos</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="index.aspx"><i class="fa fa-dashboard"></i>Home</a></li>
-                <li class="active">Dashboard</li>
+                <li class="active">Apartamentos</li>
             </ol>
         </section>
 
@@ -38,6 +38,7 @@
                         </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
+
 
         </section>
 

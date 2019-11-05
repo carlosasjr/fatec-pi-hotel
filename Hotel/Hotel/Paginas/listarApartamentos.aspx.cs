@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using System.Data;
 using System.Linq;
 using System.Web;
@@ -17,7 +16,6 @@ public partial class Paginas_Default3 : System.Web.UI.Page
         if (gdvApartamento.Rows.Count > 1)
             gdvApartamento.HeaderRow.TableSection = TableRowSection.TableHeader;
     }
-
     private void Carrega()
     {
         DataSet ds = ApartamentoDB.SelectAll();
@@ -67,5 +65,4 @@ public partial class Paginas_Default3 : System.Web.UI.Page
     }
 
 }
-
 
