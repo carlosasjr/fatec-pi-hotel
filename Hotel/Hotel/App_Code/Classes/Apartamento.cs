@@ -14,6 +14,7 @@ namespace Hotel.Classes
     {
         public Hotel hotel;
         public Andar andar;
+        public Categoria categoria;
         public int id;
         public string descricao;
         public string numero;

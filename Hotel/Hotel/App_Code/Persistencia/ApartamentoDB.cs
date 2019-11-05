@@ -23,14 +23,15 @@ public class ApartamentoDB
 
             if (apartamento.id == 0)
             {
-                string sql = "INSERT INTO apt_apartamento(htl_id,and_id,apt_descricao,apt_numero,apt_ramal,apt_acessibilidade," +
-                    "apt_berco,apt_posicao,apt_qtd_cama_casal,apt_qtd_cama_solteiro,apt_observacoes,apt_status,apt_ativo) VALUES (?htl_id,?and_id,?apt_descricao,?apt_numero,?apt_ramal,?apt_acessibilidade," +
+                string sql = "INSERT INTO apt_apartamento(htl_id,and_id,cat_id,apt_descricao,apt_numero,apt_ramal,apt_acessibilidade," +
+                    "apt_berco,apt_posicao,apt_qtd_cama_casal,apt_qtd_cama_solteiro,apt_observacoes,apt_status,apt_ativo) VALUES (?htl_id,?and_id,?cat_id,?apt_descricao,?apt_numero,?apt_ramal,?apt_acessibilidade," +
                     "?apt_berco,?apt_posicao,?apt_qtd_cama_casal,?apt_qtd_cama_solteiro,?apt_observacoes,?apt_status,?apt_ativo)";
 
                 objCommand = Mapped.Comando(sql, objConexao);
 
                 objCommand.Parameters.Add(Mapped.Parametro("?htl_id", apartamento.hotel.id));
                 objCommand.Parameters.Add(Mapped.Parametro("?and_id", apartamento.andar.id));
+                objCommand.Parameters.Add(Mapped.Parametro("?cat_id", apartamento.categoria.id));
                 objCommand.Parameters.Add(Mapped.Parametro("?apt_descricao", apartamento.descricao));
                 objCommand.Parameters.Add(Mapped.Parametro("?apt_numero", apartamento.numero));
                 objCommand.Parameters.Add(Mapped.Parametro("?apt_ramal", apartamento.ramal));
@@ -52,6 +53,7 @@ public class ApartamentoDB
                 string sql = "UPDATE apt_apartamento SET " +
                              "htl_id = ?htl_id, " +
                              "and_id = ?and_id, " +
+                             "cat_id = ?cat_id," +
                              "apt_descricao = ?apt_descricao, " +
                              "apt_numero = ?apt_numero, " +
                              "apt_ramal = ?apt_ramal, " +
@@ -62,13 +64,14 @@ public class ApartamentoDB
                              "apt_qtd_cama_solteiro = ?apt_qtd_cama_solteiro, " +
                              "apt_observacoes = ?apt_observacoes, " +
                              "apt_status = ?apt_status, " +
-                             "apt_ativo = ?apt_ativo, " +
+                             "apt_ativo = ?apt_ativo " +
                              "WHERE apt_id = ?id";
 
                 objCommand = Mapped.Comando(sql, objConexao);
 
                 objCommand.Parameters.Add(Mapped.Parametro("?htl_id", apartamento.hotel.id));
                 objCommand.Parameters.Add(Mapped.Parametro("?and_id", apartamento.andar.id));
+                objCommand.Parameters.Add(Mapped.Parametro("?cat_id", apartamento.categoria.id));
                 objCommand.Parameters.Add(Mapped.Parametro("?apt_descricao", apartamento.descricao));
                 objCommand.Parameters.Add(Mapped.Parametro("?apt_numero", apartamento.numero));
                 objCommand.Parameters.Add(Mapped.Parametro("?apt_ramal", apartamento.ramal));
@@ -97,8 +100,9 @@ public class ApartamentoDB
             retorno = -1;
         }
 
-        catch (Exception)
+        catch (Exception e )
         {
+            string erro = e.Message;
             retorno = -2;
         }
 
@@ -170,9 +174,11 @@ public class ApartamentoDB
 
             Andar andar = AndarDB.Select(Convert.ToInt32(objDataReader["and_id"]));
             obj.andar = andar;
+            Categoria categoria = CategoriaDB.Select(Convert.ToInt32(objDataReader["cat_id"]));
+            obj.categoria = categoria;
 
             obj.hotel = obj.andar.hotel;
-
+            
             obj.id = Convert.ToInt32(objDataReader["apt_id"]);
             obj.descricao = Convert.ToString(objDataReader["apt_descricao"]);
             obj.numero = Convert.ToString(objDataReader["apt_numero"]);

@@ -44,7 +44,7 @@ public class CategoriaDB
                              "cat_qtdapartamento = ?cat_qtdapartamento, " +
                              "cat_abreviacao = ?cat_abreviacao, " +
                              "cat_qtdacomodacoes = ?cat_qtdacomodacoes, " +
-                             "ativo = ?ativo, " +
+                             "ativo = ?ativo " +
 
                              "WHERE cat_id = ?id";
 
@@ -86,7 +86,7 @@ public class CategoriaDB
         System.Data.IDbConnection objConexao;
         System.Data.IDbCommand objCommand;
 
-        string sql = "DELETE FROM cat_categoria WHERE cat_id = ?id";
+        string sql = "DELETE FROM cat_catapartamento WHERE cat_id = ?id";
 
         objConexao = Mapped.Conexao();
         objCommand = Mapped.Comando(sql, objConexao);
@@ -154,8 +154,12 @@ public class CategoriaDB
             obj.descricao = Convert.ToString(objDataReader["cat_descricao"]);
             obj.qtdapartamento = Convert.ToInt32(objDataReader["cat_qtdapartamento"]);
             obj.abreviacao = Convert.ToString(objDataReader["cat_abreviacao"]);
+<<<<<<< HEAD
             obj.qtdacomodacoes = Convert.ToInt32(objDataReader["cat`_qtdacomodacoes"]);
 
+=======
+            obj.qtdacomodacoes = Convert.ToInt32(objDataReader["cat_qtdacomodacoes"]);
+>>>>>>> 9cffa4d89c508058942c9e0330c77744e5f70562
             obj.ativo = Convert.ToInt32(objDataReader["ativo"]);
 
         }

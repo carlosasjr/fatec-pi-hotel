@@ -14,7 +14,23 @@ public partial class Paginas_Default3 : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!Page.IsPostBack)
+        {
+            if (Convert.ToString(Session["ID"]) != "")
+            {
+                Categoria categoria = CategoriaDB.Select(Convert.ToInt32(Session["ID"]));
 
+                if (categoria != null)
+                {
+                    txtID.Text = categoria.id.ToString();
+                    txtDescricao.Text = categoria.descricao;
+                    txtAbreviacao.Text = categoria.abreviacao;
+                    txtQtdApartamento.Text = Convert.ToString(categoria.qtdapartamento);
+                    txtQtdAcomodacoes.Text = Convert.ToString(categoria.qtdacomodacoes);
+
+                }
+            }
+        }
     }
 <<<<<<< HEAD
 =======
