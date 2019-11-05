@@ -25,7 +25,7 @@
             <asp:LinkButton ID="lbCadastrar" runat="server" CssClass="btn btn-primary" OnClick="lbCadastrar_Click">Cadastrar</asp:LinkButton>
                 <br />
                  <br />
-                <asp:GridView ID="gdvCategoria" CssClass="table table-hover table-success tabela" runat="server" AutoGenerateColumns="false" OnRowCommcat="gdvCategoria_RowCommand" >
+                <asp:GridView ID="gdvCategoria" CssClass="table table-hover table-success tabela" runat="server" AutoGenerateColumns="false" OnRowCommand="gdvCategoria_RowCommand" >
                     <Columns>
                         <asp:BoundField HeaderText="ID" DataField="cat_id" />
                         <asp:BoundField HeaderText="Descrição" DataField="cat_descricao" />

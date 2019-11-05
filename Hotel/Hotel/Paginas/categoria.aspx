@@ -33,43 +33,52 @@
                                 <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
                             </div>
                         </div>
-
-                        <div class="box-body">
-                            <asp:TextBox ID="txtID" runat="server" CssClass="form-control" Visible="False"></asp:TextBox>
-
-                            <div class="form-group">
-                                <label for="txtDescricao">Descrição</label>
-                                <asp:TextBox ID="txtDescricao" runat="server" CssClass="form-control"></asp:TextBox>
-                            </div>
-                            <div class="form-group">
-                                <label for="txtAbreviacao">Abreviação</label>
-                                <asp:TextBox ID="txtAbreviacao" runat="server" CssClass="form-control"></asp:TextBox>
-                            </div>
-
-
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-12 col-sm-6">
-                                        <label for="txtQtdAcomodacoes">Quantidade de Acomodações</label>
-                                        <asp:TextBox ID="txtQtdAcomodacoes" runat="server" CssClass="form-control"></asp:TextBox>
-                                    </div>
-                                    <div class="col-12 col-sm-6">
-                                        <label for="txtQtdApartamento">Quantidade de Apartamentos</label>
-                                        <asp:TextBox ID="txtQtdApartamento" runat="server" CssClass="form-control"></asp:TextBox>
-                                    </div>
-                                    <asp:Button runat="server" ID="btnSalvar" CssClass="btn btn-primary" Text="Salvar" OnClick="btnSalvar_Click" />
-                                    <br />
-                                    <br />
-                                    <br />
-                                    <div class="col-12 col-sm-12">
-                                        <asp:Label runat="server" CssClass="alert alert-info" Visible="false" ID="lblMensagem"></asp:Label>
-                                    </div>
-                                </div>
-                                <!-- /.box-body -->
-                            </div>
-                            <!-- /.box box-default -->
-                        </div>
                     </div>
+                </div>
+            </div>
+
+            <div class="box-body">
+                <asp:TextBox ID="txtID" runat="server" CssClass="form-control" Visible="False"></asp:TextBox>
+
+                <div class="form-group">
+                    <label for="txtDescricao">Descrição</label>
+                    <asp:TextBox ID="txtDescricao" runat="server" CssClass="form-control"></asp:TextBox>
+                </div>
+                <div class="form-group">
+                    <label for="txtAbreviacao">Abreviação</label>
+                    <asp:TextBox ID="txtAbreviacao" runat="server" CssClass="form-control"></asp:TextBox>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-12 col-sm-6">
+                            <label for="txtQtdAcomodacoes">Quantidade de Acomodações</label>
+                            <asp:TextBox ID="txtQtdAcomodacoes" runat="server" CssClass="form-control"></asp:TextBox>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <label for="txtQtdApartamento">Quantidade de Apartamentos</label>
+                            <asp:TextBox ID="txtQtdApartamento" runat="server" CssClass="form-control"></asp:TextBox>
+                        </div>
+
+
+                    </div>
+                    <!-- /.box-body -->
+                    <br>
+                    <asp:Button runat="server" ID="btnSalvar" CssClass="btn btn-primary" Text="Salvar" OnClick="btnSalvar_Click" />
+                    <br />
+                    <br />
+                    <br />
+                    <div class="col-12 col-sm-12">
+                        <asp:Label runat="server" CssClass="alert alert-info" Visible="false" ID="lblMensagem"></asp:Label>
+                    </div>
+                </div>
+                <!-- /.box box-default -->
+                <br />
+                <br />
+                <br />
+            </div>
+
         </section>
 
     </div>

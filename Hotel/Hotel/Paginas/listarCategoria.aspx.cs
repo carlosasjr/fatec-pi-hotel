@@ -30,6 +30,13 @@ public partial class Paginas_Default3 : System.Web.UI.Page
     }
 
 
+ 
+    protected void lbCadastrar_Click(object sender, EventArgs e)
+    {
+        Session["ID"] = "";
+        Response.Redirect("Categoria.aspx");
+    }
+
     protected void gdvCategoria_RowCommand(object sender, GridViewCommandEventArgs e)
     {
         int codigo = 0;
@@ -52,12 +59,6 @@ public partial class Paginas_Default3 : System.Web.UI.Page
                 break;
 
         }
-    }
-
-    protected void lbCadastrar_Click(object sender, EventArgs e)
-    {
-        Session["ID"] = "";
-        Response.Redirect("Categoria.aspx");
     }
 }
 
