@@ -70,8 +70,7 @@ public partial class Paginas_Default3 : System.Web.UI.Page
                     txtendereco.Text = hospede.endereco;
                     txtnumero.Text = hospede.numero;
                     txtbairro.Text = hospede.bairro;
-
-
+                    
                     txtcomplemento.Text = hospede.complemento;
                     txtcep.Text = hospede.cep;
 
@@ -128,7 +127,7 @@ public partial class Paginas_Default3 : System.Web.UI.Page
         hospede.fisica_juridica = "F";
         hospede.cep = txtcep.Text;
 
-        hospede.tipo = 1;
+        hospede.tipo = "1";
 
         //obj.complemento = Convert.ToString(objDataReader["htl_complemento"]);
 

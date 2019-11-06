@@ -62,29 +62,28 @@ public class HospedeDB
             }
             else
             {
-                string sql = "UPDATE pes_pessoa SET " +
-                             "htl_id = ?htl_id, " +
-                             "pes_nome = ?pes_nome, " +
-                             "pes_email = ?pes_email, " +
-                             "pes_cep = ?pes_cep, " +
-                             "pes_endereco = ?pes_endereco, " +
-                             "pes_numero = ?pes_numero, " +
-                             "pes_bairro = ?pes_bairro, " +
-                             "pes_complemento = ?pes_complemento, " +
-                             "pes_fisica_juridica = ?pes_fisica_jurica, " +
-                             "pes_cpf_cnpj = ?pes_cpf_cnpj, " +                          
-                             "pes_rg = ?pes_rg, " +
-                   //          "pes_datanasc = ?pes_datanasc, " +
-                             "pes_estadocivil = ?pes_estadocivil, "+
-                          //   "pes_profissao = ?pes_profissao, "+                   
-                             "pes_telefone = ?pes_telefone, " +
-                             "pes_celular = ?pes_celular, " +
-                       //      "pes_contato = ?pes_contato, "+
-                             "uf_sigla = ?uf_sigla, " +
-                             "cid_codibge = ?cid_codibge, " +
-                             "pes_tipo = ?pes_tipo, " +
-                             "pes_ativo = ?pes_ativo " +
-                             "WHERE pes_id = ?id";
+                string sql = "UPDATE pes_pessoa SET pes_nome = ?pes_nome, " +
+                              "pes_email = ?pes_email, " +
+                              "pes_cep = ?pes_cep, " +
+                              "pes_endereco = ?pes_endereco, " +
+                              "pes_numero = ?pes_numero, " +
+                              "pes_bairro = ?pes_bairro, " +
+                              "pes_complemento = ?pes_complemento, " +
+                              "pes_fisica_juridica = ?pes_fisica_juridica, " +
+                              "pes_cpf_cnpj = ?pes_cpf_cnpj, " +
+
+                              "pes_rg = ?pes_rg, " +
+                              "pes_datanasc = ?pes_datanasc, " +
+                              "pes_estadocivil = ?pes_estadocivil, " +
+                              "pes_profissao = ?pes_profissao, " +
+
+                              "pes_telefone = ?pes_telefone, " +
+                              "pes_celular = ?pes_celular, " +
+                              "pes_contato = ?pes_contato, " +
+                              "uf_sigla = ?uf_sigla, " +
+                              "cid_codibge = ?cid_codibge," +
+                              "pes_tipo = ?pes_tipo " +
+                              "WHERE pes_id = ?id";
 
                 objCommand = Mapped.Comando(sql, objConexao);
 
@@ -97,17 +96,18 @@ public class HospedeDB
                 objCommand.Parameters.Add(Mapped.Parametro("?pes_complemento", hospede.complemento));
                 objCommand.Parameters.Add(Mapped.Parametro("?pes_fisica_juridica", hospede.fisica_juridica));
                 objCommand.Parameters.Add(Mapped.Parametro("?pes_cpf_cnpj", hospede.cpf_cnpj));
+
                 objCommand.Parameters.Add(Mapped.Parametro("?pes_rg", hospede.rg));
-                //objCommand.Parameters.Add(Mapped.Parametro("?pes_datanasc", Convert.ToDateTime(hospede.nascimento)));
+                objCommand.Parameters.Add(Mapped.Parametro("?pes_datanasc", Convert.ToDateTime(hospede.nascimento)));
                 objCommand.Parameters.Add(Mapped.Parametro("?pes_estadocivil", hospede.estado_civil));
-          //      objCommand.Parameters.Add(Mapped.Parametro("?pes_profissao", hospede.profissao));
+                objCommand.Parameters.Add(Mapped.Parametro("?pes_profissao", hospede.profissao));
+
                 objCommand.Parameters.Add(Mapped.Parametro("?pes_telefone", hospede.telefone));
                 objCommand.Parameters.Add(Mapped.Parametro("?pes_celular", hospede.celular));
-             //   objCommand.Parameters.Add(Mapped.Parametro("?pes_contato", hospede.contato));
+                objCommand.Parameters.Add(Mapped.Parametro("?pes_contato", hospede.contato));
                 objCommand.Parameters.Add(Mapped.Parametro("?uf_sigla", hospede.estado.uf));
                 objCommand.Parameters.Add(Mapped.Parametro("?cid_codibge", hospede.cidade.codibge));
-                objCommand.Parameters.Add(Mapped.Parametro("?pes_tipo", hospede.tipo));
-                objCommand.Parameters.Add(Mapped.Parametro("?pes_ativo", Convert.ToString(hospede.ativo)));
+                objCommand.Parameters.Add(Mapped.Parametro("?pes_tipo",hospede.tipo));
 
                 objCommand.Parameters.Add(Mapped.Parametro("?id", hospede.id));
             }
@@ -143,8 +143,9 @@ public class HospedeDB
 
         objConexao = Mapped.Conexao();
 
-        string sql = "SELECT * FROM pes_pessoa WHERE pes_tipo = 1";
+        string sql = "SELECT * FROM pes_pessoa WHERE pes_tipo = ?pes_tipo";
         objCommand = Mapped.Comando(sql, objConexao);
+        objCommand.Parameters.Add(Mapped.Parametro("?pes_tipo", '1'));
 
         objDataAdapter = Mapped.Adapter(objCommand);
         objDataAdapter.Fill(ds);
@@ -193,7 +194,7 @@ public class HospedeDB
             obj.telefone = Convert.ToString(objDataReader["pes_telefone"]);
             obj.celular = Convert.ToString(objDataReader["pes_celular"]);
             obj.contato = Convert.ToString(objDataReader["pes_contato"]);
-            obj.tipo = Convert.ToInt32(objDataReader["pes_tipo"]);
+            obj.tipo = Convert.ToString(objDataReader["pes_tipo"]);
             obj.ativo = Convert.ToInt32(objDataReader["pes_ativo"]);
 
             Cidade cidade = CidadeDB.Select(Convert.ToInt32(objDataReader["cid_codibge"]));

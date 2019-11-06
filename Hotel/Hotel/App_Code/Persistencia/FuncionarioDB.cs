@@ -47,7 +47,7 @@ public class FuncionarioDB
             obj.telefone = Convert.ToString(objDataReader["pes_telefone"]);
             obj.celular = Convert.ToString(objDataReader["pes_celular"]);
             obj.contato = Convert.ToString(objDataReader["pes_contato"]);
-            obj.tipo = Convert.ToInt32(objDataReader["pes_tipo"]);
+            obj.tipo = Convert.ToString(objDataReader["pes_tipo"]);
             obj.ativo = Convert.ToInt32(objDataReader["pes_ativo"]);
             obj.senha = Convert.ToString(objDataReader["pes_senha"]);
 

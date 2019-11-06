@@ -31,7 +31,7 @@ namespace Hotel.Classes
         public string telefone;
         public string celular;
         public string contato;
-        public int tipo;
+        public string tipo;
 
        
         public Estado estado;
