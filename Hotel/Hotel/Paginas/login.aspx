@@ -42,7 +42,7 @@
                 </div>
                 <div class="form-group has-feedback">
                     <label for="txtSenha">Senha:</label>
-                    <asp:TextBox ID="txtSenha" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox TextMode="Password"   ID="txtSenha" runat="server" CssClass="form-control"></asp:TextBox>
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 </div>
                 <div class="row">
