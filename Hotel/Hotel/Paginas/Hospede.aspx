@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Content/Master/Principal.master" AutoEventWireup="true" CodeFile="Hospede.aspx.cs" Inherits="Paginas_Default3" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Content/Master/Principal.master" AutoEventWireup="true" CodeFile="hospede.aspx.cs" Inherits="Paginas_Default3" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <!-- Se precisar, coloque os links para seus css aqui -->

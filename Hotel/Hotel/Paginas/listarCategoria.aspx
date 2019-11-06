@@ -33,7 +33,7 @@
 
                         <asp:TemplateField HeaderText="Ações">
                             <ItemTemplate>
-                                <asp:LinkButton ID="lbAlterar" runat="server" CssClass="btn btn-dark" CommandName="Alterar" CommandArgument='<%# Bind("cat_id") %>'>Alterar</asp:LinkButton>
+                                <asp:LinkButton ID="lbAlterar" runat="server" CssClass="btn btn-primary" CommandName="Alterar" CommandArgument='<%# Bind("cat_id") %>'>Alterar</asp:LinkButton>
                                 <asp:LinkButton ID="lbDeletar" runat="server" CssClass="btn btn-danger" CommandName="Deletar" CommandArgument='<%# Bind("cat_id") %>'>Deletar</asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>

@@ -224,5 +224,9 @@
     <script src="../../assets/dist/js/pages/dashboard.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="../../assets/dist/js/demo.js"></script>
+    <!-- Notify -->
+    <script src="../../assets/bower_components/notify/notify.min.js"></script>
+    <!-- Scripts Hotel -->
+    <script src="../../assets/js/script.js"></script>
 </body>
 </html>

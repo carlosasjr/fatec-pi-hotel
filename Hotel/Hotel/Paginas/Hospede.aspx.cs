@@ -152,9 +152,7 @@ public partial class Paginas_Default3 : System.Web.UI.Page
         switch (retorno)
         {
             case 0:
-                txtnome.Focus();
-                lblMensagem.Visible = true;
-                lblMensagem.Text = "Cadastro realizado com sucesso.";
+                Response.Redirect("listarHospede.aspx?store=true");
                 break;
 
             case 1:

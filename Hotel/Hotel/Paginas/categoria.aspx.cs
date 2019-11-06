@@ -54,9 +54,7 @@ public partial class Paginas_Default3 : System.Web.UI.Page
         switch (retorno)
         {
             case 0:
-                txtDescricao.Focus();
-                lblMensagem.Visible = true;
-                lblMensagem.Text = "Cadastro realizado com sucesso.";
+                Response.Redirect("listarCategoria.aspx");
                 break;
 
             case 1:

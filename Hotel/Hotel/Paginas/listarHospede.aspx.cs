@@ -59,6 +59,6 @@ public partial class Paginas_Default3 : System.Web.UI.Page
     protected void lbCadastrar_Click(object sender, EventArgs e)
     {
         Session["ID"] = "";
-        Response.Redirect("Hospede.aspx");
+        Response.Redirect("hospede.aspx");
     }
 }
