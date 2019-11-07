@@ -41,7 +41,7 @@ public partial class Paginas_Default3 : System.Web.UI.Page
             case "Alterar":
                 codigo = Convert.ToInt32(e.CommandArgument);
                 Session["ID"] = codigo;
-                Response.Redirect("Hospede.aspx");
+                Response.Redirect("hospede.aspx");
                 break;
 
             case "Deletar":

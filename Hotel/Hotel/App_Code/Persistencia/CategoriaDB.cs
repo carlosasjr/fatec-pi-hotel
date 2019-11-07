@@ -117,7 +117,7 @@ public class CategoriaDB
 
         string sql = "SELECT * FROM cat_catapartamento WHERE ativo = ?ativo";
         objCommand = Mapped.Comando(sql, objConexao);
-        objCommand.Parameters.Add(Mapped.Parametro("?ativo", 1));
+        objCommand.Parameters.Add(Mapped.Parametro("?ativo", "1"));
         objDataAdapter = Mapped.Adapter(objCommand);
         objDataAdapter.Fill(ds);
 
