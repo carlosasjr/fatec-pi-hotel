@@ -19,14 +19,14 @@ namespace Hotel.Classes
         public string descricao;
         public string numero;
         public int ramal;
-        public int acessibilidade;
-        public int berco;
+        public string acessibilidade;
+        public string berco;
         public int posicao;
         public int qtdCamaCasal;
         public int qtdCamaSolteiro;
         public string observacoes;
         public string status;
-        public int ativo;
+        public string ativo;
 
 
 

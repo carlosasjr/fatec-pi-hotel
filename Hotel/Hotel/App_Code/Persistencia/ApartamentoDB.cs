@@ -140,7 +140,7 @@ public class ApartamentoDB
 
         objConexao = Mapped.Conexao();
 
-        string sql = "SELECT * FROM apt_apartamento WHERE apt_ativo = 1";
+        string sql = "SELECT * FROM apt_apartamento";
         objCommand = Mapped.Comando(sql, objConexao);
 
         objDataAdapter = Mapped.Adapter(objCommand);
@@ -184,14 +184,14 @@ public class ApartamentoDB
             obj.descricao = Convert.ToString(objDataReader["apt_descricao"]);
             obj.numero = Convert.ToString(objDataReader["apt_numero"]);
             obj.ramal = Convert.ToInt32(objDataReader["apt_ramal"]);
-            obj.acessibilidade = Convert.ToInt32(objDataReader["apt_acessibilidade"]);
-            obj.berco = Convert.ToInt32(objDataReader["apt_berco"]);
+            obj.acessibilidade = Convert.ToString(objDataReader["apt_acessibilidade"]);
+            obj.berco = Convert.ToString(objDataReader["apt_berco"]);
             obj.posicao = Convert.ToInt32(objDataReader["apt_posicao"]);
             obj.qtdCamaCasal = Convert.ToInt32(objDataReader["apt_qtd_cama_casal"]);
             obj.qtdCamaSolteiro = Convert.ToInt32(objDataReader["apt_qtd_cama_solteiro"]);
             obj.observacoes = Convert.ToString(objDataReader["apt_observacoes"]);
             obj.status = Convert.ToString(objDataReader["apt_status"]);
-            obj.ativo = Convert.ToInt32(objDataReader["apt_ativo"]);
+            obj.ativo = Convert.ToString(objDataReader["apt_ativo"]);
             
         }
 
