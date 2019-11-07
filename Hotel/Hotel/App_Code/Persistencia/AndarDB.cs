@@ -1,6 +1,7 @@
 ﻿using Hotel.Classes;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 
@@ -34,6 +35,7 @@ public class AndarDB
             obj.hotel = hotel;
 
             obj.numero = Convert.ToInt32(objDataReader["and_numero"]);
+            obj.id = Convert.ToInt32(objDataReader["and_id"]);
         }
 
 
@@ -44,5 +46,26 @@ public class AndarDB
         objDataReader.Dispose();
 
         return obj;
+    }
+    public static DataSet SelectAll()
+    {
+        DataSet ds = new DataSet();
+
+        System.Data.IDbConnection objConexao;
+        System.Data.IDbCommand objCommand;
+        System.Data.IDataAdapter objDataAdapter;
+
+        objConexao = Mapped.Conexao();
+
+        string sql = "SELECT * FROM and_andar";
+        objCommand = Mapped.Comando(sql, objConexao);
+        objDataAdapter = Mapped.Adapter(objCommand);
+        objDataAdapter.Fill(ds);
+
+        objConexao.Close();
+        objCommand.Dispose();
+        objConexao.Dispose();
+
+        return ds;
     }
 }
