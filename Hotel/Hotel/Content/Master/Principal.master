@@ -19,16 +19,16 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="../../assets/dist/css/skins/_all-skins.min.css">
-    <!-- Morris chart -->
-    <link rel="stylesheet" href="../../assets/bower_components/morris.js/morris.css">
+
     <!-- jvectormap -->
     <link rel="stylesheet" href="../../assets/bower_components/jvectormap/jquery-jvectormap.css">
-    <!-- Date Picker -->
-    <link rel="stylesheet" href="../../assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
-    <!-- Daterange picker -->
-    <link rel="stylesheet" href="../../assets/bower_components/bootstrap-daterangepicker/daterangepicker.css">
+
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="../../assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+
+    <link href="../../assets/bower_components/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="../../assets/bower_components/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="../../assets/bower_components/DataTables/css/buttons.dataTables.min.css" rel="stylesheet" />
 
 
     <asp:ContentPlaceHolder ID="head" runat="server">
@@ -146,8 +146,8 @@
                                 </a>
                                 <ul class="treeview-menu">
                                     <li><a href="../../Paginas/hotel.aspx"><i class="fa fa-circle-o"></i>Hotel</a></li>
-                                    <li><a href="#"><i class="fa fa-circle-o"></i>Perfil</a></li>
-                                    <li><a href="../../Paginas/funcionario.aspx"><i class="fa fa-circle-o"></i>Funcionários</a></li>
+                                    <li><a href="../../Paginas/listarPerfil.aspx"><i class="fa fa-circle-o"></i>Perfil</a></li>
+                                    <li><a href="../../Paginas/listarFuncionario.aspx"><i class="fa fa-circle-o"></i>Funcionários</a></li>
                                 </ul>
                             </li>
 
@@ -197,9 +197,6 @@
     </script>
     <!-- Bootstrap 3.3.7 -->
     <script src="../../assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- Morris.js charts -->
-    <script src="../../assets/bower_components/raphael/raphael.min.js"></script>
-    <script src="../../assets/bower_components/morris.js/morris.min.js"></script>
     <!-- Sparkline -->
     <script src="../../assets/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
     <!-- jvectormap -->
@@ -207,11 +204,7 @@
     <script src="../../assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
     <!-- jQuery Knob Chart -->
     <script src="../../assets/bower_components/jquery-knob/dist/jquery.knob.min.js"></script>
-    <!-- daterangepicker -->
-    <script src="../../assets/bower_components/moment/min/moment.min.js"></script>
-    <script src="../../assets/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-    <!-- datepicker -->
-    <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
     <!-- Bootstrap WYSIHTML5 -->
     <script src="../../assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
     <!-- Slimscroll -->
@@ -220,13 +213,89 @@
     <script src="../../assets/bower_components/fastclick/lib/fastclick.js"></script>
     <!-- AdminLTE App -->
     <script src="../../assets/dist/js/adminlte.min.js"></script>
-    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="../../assets/dist/js/pages/dashboard.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="../../assets/dist/js/demo.js"></script>
     <!-- Notify -->
     <script src="../../assets/bower_components/notify/notify.min.js"></script>
     <!-- Scripts Hotel -->
-    <script src="../../assets/js/script.js"></script>
+
+
+    <script src="../../assets/bower_components/DataTables/jquery.dataTables.min.js"></script>
+    <script src="../../assets/bower_components/DataTables/dataTables.buttons.min.js"></script>
+    <script src="../../assets/bower_components/DataTables/buttons.flash.min.js"></script>
+    <script src="../../assets/bower_components/DataTables/buttons.html5.min.js"></script>
+    <script src="../../assets/bower_components/DataTables/buttons.print.min.js"></script>
+    <script src="../../assets/bower_components/DataTables/buttons.colVis.min.js"></script>
+    <script src="../../assets/jszip.min.js"></script>
+    <script src="../../assets/pdfmake.min.js"></script>
+
+    <script type="text/javascript">
+            $('.tabela').DataTable({
+                paging: true,
+                searching: true,
+                ordering: true,
+                dom: 'Bfrtip',
+                stateSave: true,
+
+                buttons: [
+                    {
+                        extend: 'print',
+                        text: '<i class="fa fa-print"></i>',
+                        titleAttr: 'Imprimir',
+                        exportOptions: {
+                            columns: ':visible'
+                        }
+                    },
+                    {
+                        extend: 'copy',
+                        text: '<i class="fa fa-copy"></i>',
+                        titleAttr: 'Copiar',
+                        exportOptions: {
+                            columns: [0, ':visible']
+                        }
+                    },
+                    {
+                        extend: 'excel',
+                        text: '<i class="fa fa-file-excel-o"></i>',
+                        titleAttr: 'Excel',
+                        exportOptions: {
+                            columns: ':visible'
+                        }
+                    },
+                    {
+                        extend: 'pdf',
+                        text: '<i class="fa fa-file-pdf-o"></i>',
+                        titleAttr: 'PDF',
+                        exportOptions: {
+                            columns: ':visible'
+                        }
+                    },
+                    'colvis'
+                ],
+
+                language: {
+                    sProcessing: "A processar...",
+                    sLengthMenu: "Mostrar _MENU_ registos",
+                    sZeroRecords: "Não foram encontrados resultados",
+                    sInfo: "Mostrando de _START_ até _END_ de _TOTAL_ registos",
+                    sInfoEmpty: "Mostrando de 0 até 0 de 0 registos",
+                    sInfoFiltered: "(filtrado de _MAX_ registos no total)",
+                    sInfoPostFix: "",
+                    sSearch: "Procurar:",
+                    sUrl: "",
+                    oPaginate: {
+                        sFirst: "Primeiro",
+                        sPrevious: "Anterior",
+                        sNext: "Seguinte",
+                        sLast: "Último",
+                    },
+                    buttons: {
+                        colvis: 'Selecione colunas',
+                        copyTitle: 'Copiar',
+                        copySuccess: { 1: "Copiado 1 linha para área de transferência", _: "Copiado %d linhas para área de transferência" }
+                    }
+                }
+            });
+    </script>
 </body>
 </html>

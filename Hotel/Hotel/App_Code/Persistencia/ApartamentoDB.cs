@@ -43,10 +43,6 @@ public class ApartamentoDB
                 objCommand.Parameters.Add(Mapped.Parametro("?apt_observacoes", apartamento.observacoes));
                 objCommand.Parameters.Add(Mapped.Parametro("?apt_status", apartamento.status));
                 objCommand.Parameters.Add(Mapped.Parametro("?apt_ativo", apartamento.ativo));
-
-
-
-
             }
             else
             {
