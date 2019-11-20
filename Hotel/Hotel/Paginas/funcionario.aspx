@@ -11,7 +11,7 @@
     <div class="content-wrapper">
         <!-- Identificação da página, altere esses dados para a página correspondente. -->
         <section class="content-header">
-            <h1>Hotel
+            <h1>Funcionário
             <small>Cadastro Funcionário</small>
             </h1>
             <ol class="breadcrumb">

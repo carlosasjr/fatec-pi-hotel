@@ -35,11 +35,6 @@ public partial class Paginas_Default3 : System.Web.UI.Page
     }
 
 
-
-
-
-
-
     protected void gdvApartamento_RowCommand(object sender, GridViewCommandEventArgs e)
     {
         int codigo = 0;

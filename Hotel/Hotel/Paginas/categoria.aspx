@@ -33,12 +33,8 @@
                         <asp:TextBox ID="txtID" runat="server" CssClass="form-control" Visible="False"></asp:TextBox>
                     </div>
                 </div>
-            </div>
-
 
             <div class="box-body">
-
-
                 <div class="form-group">
                     <label for="txtDescricao">Descrição</label>
                     <asp:TextBox ID="txtDescricao" runat="server" CssClass="form-control"></asp:TextBox>
@@ -77,6 +73,12 @@
                 <br />
                 <br />
             </div>
+
+
+            </div>
+
+
+
 
         </section>
 

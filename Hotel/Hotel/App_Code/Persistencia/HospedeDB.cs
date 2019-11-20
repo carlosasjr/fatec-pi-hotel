@@ -133,6 +133,8 @@ public class HospedeDB
         return retorno;
     }
 
+
+
     public static DataSet SelectAll()
     {
         DataSet ds = new DataSet();
@@ -155,6 +157,30 @@ public class HospedeDB
         objConexao.Dispose();
 
         return ds;
+    }
+
+    public static int Count()
+    {
+        DataSet ds = new DataSet();
+
+        System.Data.IDbConnection objConexao;
+        System.Data.IDbCommand objCommand;
+        System.Data.IDataAdapter objDataAdapter;
+
+        objConexao = Mapped.Conexao();
+
+        string sql = "SELECT * FROM pes_pessoa WHERE pes_tipo = ?pes_tipo";
+        objCommand = Mapped.Comando(sql, objConexao);
+        objCommand.Parameters.Add(Mapped.Parametro("?pes_tipo", '1'));
+
+        objDataAdapter = Mapped.Adapter(objCommand);
+        objDataAdapter.Fill(ds);
+
+        objConexao.Close();
+        objCommand.Dispose();
+        objConexao.Dispose();
+
+        return ds.Tables[0].Rows.Count;
     }
 
     public static Hospede Select(int id)

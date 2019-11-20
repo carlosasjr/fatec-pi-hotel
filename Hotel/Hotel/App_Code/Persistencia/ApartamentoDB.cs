@@ -148,6 +148,103 @@ public class ApartamentoDB
 
         return ds;
     }
+
+    public static int Count()
+    {
+        DataSet ds = new DataSet();
+
+        System.Data.IDbConnection objConexao;
+        System.Data.IDbCommand objCommand;
+        System.Data.IDataAdapter objDataAdapter;
+
+        objConexao = Mapped.Conexao();
+
+        string sql = "SELECT * FROM apt_apartamento";
+        objCommand = Mapped.Comando(sql, objConexao);
+
+        objDataAdapter = Mapped.Adapter(objCommand);
+        objDataAdapter.Fill(ds);
+
+        objConexao.Close();
+        objCommand.Dispose();
+        objConexao.Dispose();
+
+        return ds.Tables[0].Rows.Count;
+    }
+
+    public static int CountReservados()
+    {
+        DataSet ds = new DataSet();
+
+        System.Data.IDbConnection objConexao;
+        System.Data.IDbCommand objCommand;
+        System.Data.IDataAdapter objDataAdapter;
+
+        objConexao = Mapped.Conexao();
+
+        string sql = " SELECT *  FROM apt_apartamento apt " +
+
+                     " WHERE apt.apt_id IN(SELECT rap.apt_id FROM rap_reserva_apartamento rap " +
+
+                     " INNER JOIN res_reserva res  ON " +
+                     " (res.htl_id = rap.htl_id " +
+                     " AND res.res_id = rap.res_id) " +
+
+                     " WHERE(NOT(res.res_previsao_chegada > ?datafim " +
+                     " OR res_previsao_saida < ?datainicio)) " +
+                     " AND res.res_datacancelamento is null)";
+
+        objCommand = Mapped.Comando(sql, objConexao);
+
+        objCommand.Parameters.Add(Mapped.Parametro("?datafim", DateTime.Now.Date));
+        objCommand.Parameters.Add(Mapped.Parametro("?datainicio", DateTime.Now.Date));
+
+        objDataAdapter = Mapped.Adapter(objCommand);
+        objDataAdapter.Fill(ds);
+
+        objConexao.Close();
+        objCommand.Dispose();
+        objConexao.Dispose();
+
+        return ds.Tables[0].Rows.Count;
+    }
+    public static DataSet getDisponiveis(DateTime dataInicio, DateTime dataFim)
+    {
+        DataSet ds = new DataSet();
+
+        System.Data.IDbConnection objConexao;
+        System.Data.IDbCommand objCommand;
+        System.Data.IDataAdapter objDataAdapter;
+
+        objConexao = Mapped.Conexao();
+
+        string sql = " SELECT *, concat(apt_numero, ' / ', apt_descricao) as descricao FROM apt_apartamento apt " +
+
+                     " WHERE apt.apt_id NOT IN(SELECT rap.apt_id FROM rap_reserva_apartamento rap " +
+
+                     " INNER JOIN res_reserva res  ON " +
+                     " (res.htl_id = rap.htl_id " +
+                     " AND res.res_id = rap.res_id) " +
+
+                     " WHERE(NOT(res.res_previsao_chegada > ?datafim " +
+                     " OR res_previsao_saida < ?datainicio)) " +
+                     " AND res.res_datacancelamento is null) ";
+
+        objCommand = Mapped.Comando(sql, objConexao);
+
+        objCommand.Parameters.Add(Mapped.Parametro("?datafim", dataFim));
+        objCommand.Parameters.Add(Mapped.Parametro("?datainicio", dataInicio));
+
+        objDataAdapter = Mapped.Adapter(objCommand);
+        objDataAdapter.Fill(ds);
+
+        objConexao.Close();
+        objCommand.Dispose();
+        objConexao.Dispose();
+
+        return ds;
+    }
+
     public static Apartamento Select(int id)
     {
 
@@ -199,5 +296,125 @@ public class ApartamentoDB
         objDataReader.Dispose();
 
         return obj;
+    }
+
+    public static int setStatus(int id, string status)
+    {
+        int retorno = 0;
+
+        try
+        {
+            System.Data.IDbConnection objConexao;
+            System.Data.IDbCommand objCommand;
+
+            objConexao = Mapped.Conexao();
+
+            string sql = "UPDATE apt_apartamento SET " +
+                         "apt_status = ?apt_status " +
+                         "WHERE apt_id = ?id";
+
+            objCommand = Mapped.Comando(sql, objConexao);
+
+            objCommand.Parameters.Add(Mapped.Parametro("?apt_status", status));
+            objCommand.Parameters.Add(Mapped.Parametro("?id", id));
+
+            objCommand.ExecuteNonQuery();
+
+            objConexao.Close();
+            objCommand.Dispose();
+            objConexao.Dispose();
+
+        }
+        catch (MySql.Data.MySqlClient.MySqlException e)
+        {
+            string erro = e.Message;
+            retorno = -1;
+        }
+
+        catch (Exception e)
+        {
+            string erro = e.Message;
+            retorno = -2;
+        }
+
+        return retorno;
+    }
+
+    public static DataSet getStatusNow(string status)
+    {
+        DataSet ds = new DataSet();
+
+        System.Data.IDbConnection objConexao;
+        System.Data.IDbCommand objCommand;
+        System.Data.IDataAdapter objDataAdapter;
+
+        objConexao = Mapped.Conexao();
+
+        string sql = " SELECT *  FROM apt_apartamento apt " +
+
+                     " WHERE apt.apt_id NOT IN(SELECT rap.apt_id FROM rap_reserva_apartamento rap " +
+
+                     " INNER JOIN res_reserva res  ON " +
+                     " (res.htl_id = rap.htl_id " +
+                     " AND res.res_id = rap.res_id) " +
+
+                     " WHERE(NOT(res.res_previsao_chegada > ?datafim " +
+                     " OR res_previsao_saida < ?datainicio)) " +
+                     " AND res.res_datacancelamento is null) " +
+                     " AND apt.apt_status = ?apt_status ORDER BY apt_id ";
+
+        objCommand = Mapped.Comando(sql, objConexao);
+
+        objCommand.Parameters.Add(Mapped.Parametro("?datafim", DateTime.Now.Date));
+        objCommand.Parameters.Add(Mapped.Parametro("?datainicio", DateTime.Now.Date));
+        objCommand.Parameters.Add(Mapped.Parametro("?apt_status", status));
+
+        objDataAdapter = Mapped.Adapter(objCommand);
+        objDataAdapter.Fill(ds);
+
+        objConexao.Close();
+        objCommand.Dispose();
+        objConexao.Dispose();
+
+        return ds;
+    }
+
+    public static DataSet getReservadosNow(string status)
+    {
+        DataSet ds = new DataSet();
+
+        System.Data.IDbConnection objConexao;
+        System.Data.IDbCommand objCommand;
+        System.Data.IDataAdapter objDataAdapter;
+
+        objConexao = Mapped.Conexao();
+
+        string sql = " SELECT *  FROM apt_apartamento apt " +
+
+                     " WHERE apt.apt_id IN(SELECT rap.apt_id FROM rap_reserva_apartamento rap " +
+
+                     " INNER JOIN res_reserva res  ON " +
+                     " (res.htl_id = rap.htl_id " +
+                     " AND res.res_id = rap.res_id) " +
+
+                     " WHERE(NOT(res.res_previsao_chegada > ?datafim " +
+                     " OR res_previsao_saida < ?datainicio)) " +
+                     " AND res.res_datacancelamento is null) " +
+                     " AND apt.apt_status = ?apt_status ORDER BY apt_id ";
+
+        objCommand = Mapped.Comando(sql, objConexao);
+
+        objCommand.Parameters.Add(Mapped.Parametro("?datafim", DateTime.Now.Date));
+        objCommand.Parameters.Add(Mapped.Parametro("?datainicio", DateTime.Now.Date));
+        objCommand.Parameters.Add(Mapped.Parametro("?apt_status", status));
+
+        objDataAdapter = Mapped.Adapter(objCommand);
+        objDataAdapter.Fill(ds);
+
+        objConexao.Close();
+        objCommand.Dispose();
+        objConexao.Dispose();
+
+        return ds;
     }
 }

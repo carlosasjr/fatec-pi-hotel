@@ -30,6 +30,7 @@
                         <asp:BoundField HeaderText="Id" DataField="apt_id" />
                         <asp:BoundField HeaderText="Descricão" DataField="apt_descricao" />
                         <asp:BoundField HeaderText="Numero" DataField="apt_numero" />
+                        <asp:BoundField HeaderText="Status" DataField="apt_status" />
                         <asp:TemplateField HeaderText="Ações">
                             <ItemTemplate>
                                 <asp:LinkButton ID="lbAlterar" runat="server" CssClass="btn btn-primary" CommandName="Alterar" CommandArgument='<%# Bind("apt_id") %>'>Alterar</asp:LinkButton>
