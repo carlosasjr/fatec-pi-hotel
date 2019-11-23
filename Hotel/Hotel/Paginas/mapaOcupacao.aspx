@@ -12,6 +12,10 @@
         .lb {
             padding-top: 10px;
         }
+
+        .line {
+            width: 70%;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
@@ -38,7 +42,8 @@
                     <!-- small box -->
                     <div class="small-box bg-aqua">
                         <div class="inner">
-                            <h3><asp:Label ID="lbNovasReservas" runat="server" Text="0"></asp:Label></h3>
+                            <h3>
+                                <asp:Label ID="lbNovasReservas" runat="server" Text="0"></asp:Label></h3>
 
                             <p>Novas Reservas</p>
                         </div>
@@ -53,7 +58,8 @@
                     <!-- small box -->
                     <div class="small-box bg-green">
                         <div class="inner">
-                            <h3><asp:Label ID="lbTaxaOcupacao" runat="server" Text="0"></asp:Label><sup style="font-size: 20px">%</sup></h3>
+                            <h3>
+                                <asp:Label ID="lbTaxaOcupacao" runat="server" Text="0"></asp:Label><sup style="font-size: 20px">%</sup></h3>
 
                             <p>Taxa de Ocupação</p>
                         </div>
@@ -68,7 +74,8 @@
                     <!-- small box -->
                     <div class="small-box bg-yellow">
                         <div class="inner">
-                            <h3><asp:Label ID="lbHospedes" runat="server" Text="0"></asp:Label></h3>
+                            <h3>
+                                <asp:Label ID="lbHospedes" runat="server" Text="0"></asp:Label></h3>
 
                             <p>Hospedes </p>
                         </div>
@@ -83,7 +90,8 @@
                     <!-- small box -->
                     <div class="small-box bg-red">
                         <div class="inner">
-                            <h3><asp:Label ID="lbCancelamentos" runat="server" Text="0"></asp:Label></h3>
+                            <h3>
+                                <asp:Label ID="lbCancelamentos" runat="server" Text="0"></asp:Label></h3>
 
                             <p>Cancelamentos</p>
                         </div>
@@ -97,12 +105,34 @@
             </div>
 
             <div class="row">
+                <div class="form-group">
+                    <div class="col-12 col-sm-3">
+                        <label for="txtDataEntrada">Data Entrada</label>
+                        <asp:TextBox ID="txtDataEntrada" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
+                    </div>
+
+                    <div class="col-12 col-sm-3">
+                        <label for="txtDataSaida">Data Saída</label>
+                        <asp:TextBox ID="txtDataSaida" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
+                    </div>
+                </div>
+            </div>
+
+            <br />
+
+            <div class="row">
                 <div class="col-12 col-sm-2">
                     <div id="botoes">
                         <div class="btn-group-vertical">
                             <asp:LinkButton ID="lbDisponiveis" runat="server" CssClass="btn btn-primary btn-lg" OnClick="lbDisponiveis_Click">
                                     <i class="fa fa-thumbs-o-up"></i>
                                     Disponíveis
+                            </asp:LinkButton>
+
+
+                            <asp:LinkButton ID="lbReservados" runat="server" CssClass="btn btn-primary  btn-lg" OnClick="lbReservados_Click">
+                                  <i class="fa fa-calendar-check-o"></i>
+                                Reservados
                             </asp:LinkButton>
 
                             <asp:LinkButton ID="lbCheckin" runat="server" CssClass="btn btn-primary  btn-lg" OnClick="lbCheckin_Click">
@@ -125,10 +155,6 @@
                                 Bloqueados
                             </asp:LinkButton>
 
-                            <asp:LinkButton ID="lbReservados" runat="server" CssClass="btn btn-primary  btn-lg" OnClick="lbReservados_Click">
-                                  <i class="fa fa-calendar-check-o"></i>
-                                Reservados
-                            </asp:LinkButton>
                         </div>
                     </div>
                 </div>

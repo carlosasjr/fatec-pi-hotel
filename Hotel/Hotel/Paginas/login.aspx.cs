@@ -62,6 +62,6 @@ public partial class Paginas_login : System.Web.UI.Page
             return;
         }
         Session["LOGIN"] = funcioario.id;
-        Response.Redirect("/Paginas/index.aspx");
+        Response.Redirect("/Paginas/mapaOcupacao.aspx");
     }
 }

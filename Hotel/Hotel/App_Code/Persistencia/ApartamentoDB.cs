@@ -379,7 +379,7 @@ public class ApartamentoDB
         return ds;
     }
 
-    public static DataSet getReservadosNow(string status)
+    public static DataSet getReservados(DateTime dataInicio, DateTime dataFim)
     {
         DataSet ds = new DataSet();
 
@@ -400,13 +400,12 @@ public class ApartamentoDB
                      " WHERE(NOT(res.res_previsao_chegada > ?datafim " +
                      " OR res_previsao_saida < ?datainicio)) " +
                      " AND res.res_datacancelamento is null) " +
-                     " AND apt.apt_status = ?apt_status ORDER BY apt_id ";
+                     " ORDER BY apt_id ";
 
         objCommand = Mapped.Comando(sql, objConexao);
 
-        objCommand.Parameters.Add(Mapped.Parametro("?datafim", DateTime.Now.Date));
-        objCommand.Parameters.Add(Mapped.Parametro("?datainicio", DateTime.Now.Date));
-        objCommand.Parameters.Add(Mapped.Parametro("?apt_status", status));
+        objCommand.Parameters.Add(Mapped.Parametro("?datafim", dataFim));
+        objCommand.Parameters.Add(Mapped.Parametro("?datainicio", dataInicio));
 
         objDataAdapter = Mapped.Adapter(objCommand);
         objDataAdapter.Fill(ds);

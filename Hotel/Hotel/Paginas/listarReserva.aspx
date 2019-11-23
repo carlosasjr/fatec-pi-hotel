@@ -24,13 +24,15 @@
             <asp:LinkButton ID="lbCadastrar" runat="server" CssClass="btn btn-primary" OnClick="lbCadastrar_Click">Nova Reserva</asp:LinkButton>
             <br />
             <br />
-            <asp:GridView ID="gdvReserva" CssClass="table table-hover table-success tabela" runat="server" AutoGenerateColumns="false" OnRowCommand="gdvReserva_RowCommand" OnSelectedIndexChanged="gdvReserva_SelectedIndexChanged">
+            <asp:GridView ID="gdvReserva" CssClass="table table-hover table-success tabela" runat="server" AutoGenerateColumns="False" OnRowCommand="gdvReserva_RowCommand" OnSelectedIndexChanged="gdvReserva_SelectedIndexChanged">
                 <Columns>
+                    <asp:BoundField HeaderText="Reserva" DataField="res_id" />
                     <asp:BoundField HeaderText="Hospede" DataField="pes_nome" />
-                    <asp:BoundField HeaderText="Entrada" DataField="res_previsao_chegada" />
-                    <asp:BoundField HeaderText="Saída" DataField="res_previsao_saida" />
-                    <asp:BoundField HeaderText="Check-In" DataField="res_checkin" />
-                    <asp:BoundField HeaderText="Check-Out" DataField="res_checkout" />
+                    <asp:BoundField HeaderText="Entrada" DataField="res_previsao_chegada" DataFormatString="{0:d}" />
+                    <asp:BoundField HeaderText="Saída" DataField="res_previsao_saida" DataFormatString="{0:d}" />
+                    <asp:BoundField HeaderText="Check-In" DataField="res_checkin" DataFormatString="{0:d}" />
+                    <asp:BoundField HeaderText="Check-Out" DataField="res_checkout" DataFormatString="{0:d}" />
+                    <asp:BoundField HeaderText="Cancelamento" DataField="res_datacancelamento" DataFormatString="{0:d}" />
 
                     <asp:TemplateField HeaderText="Ações">
                         <ItemTemplate>

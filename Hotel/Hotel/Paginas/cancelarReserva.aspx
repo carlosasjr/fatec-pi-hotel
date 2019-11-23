@@ -102,6 +102,7 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolderScript" runat="Server">
+   
     <script type="text/javascript">
         function confirmacao() {
             alertify.confirm('Confirma o Check-Out?', function (e) {
@@ -112,5 +113,6 @@
             return false
         }
     </script>
+
 </asp:Content>
 

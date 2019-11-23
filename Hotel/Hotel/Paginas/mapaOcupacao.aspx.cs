@@ -12,14 +12,18 @@ public partial class Paginas_Default3 : System.Web.UI.Page
     {
         DataSet ds;
         if (status.Equals("Reservado"))
-            ds = ApartamentoDB.getReservadosNow("Disponível");
+            ds = ApartamentoDB.getReservados(Convert.ToDateTime(txtDataEntrada.Text), Convert.ToDateTime(txtDataSaida.Text));
+        else
+
+        if (status.Equals("Disponível"))
+            ds = ApartamentoDB.getDisponiveis(Convert.ToDateTime(txtDataEntrada.Text), Convert.ToDateTime(txtDataSaida.Text));
         else
             ds = ApartamentoDB.getStatusNow(status);
 
-
+        panel1.Controls.Clear();
         for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
         {
-            Panel pnlPrincipal = new Panel();
+              Panel pnlPrincipal = new Panel();
             pnlPrincipal.CssClass = "col-12 col-sm-4";
 
             Panel pnlInfo = new Panel();
@@ -43,10 +47,19 @@ public partial class Paginas_Default3 : System.Web.UI.Page
             lblDescricao.Text = ds.Tables[0].Rows[i].ItemArray[3].ToString();
             pnlInfo.Controls.Add(lblDescricao);
 
+            Panel progress = new Panel();
+            progress.CssClass = "progress";
+            pnlInfo.Controls.Add(progress);
+
+            Panel progressbar = new Panel();
+            progressbar.CssClass = "progress-bar line";
+            progress.Controls.Add(progressbar);
+
             Label lblNumero = new Label();
             lblNumero.CssClass = "info-box-number text-center lb";
             lblNumero.Text = "Nº " + ds.Tables[0].Rows[i].ItemArray[1].ToString();
             pnlInfo.Controls.Add(lblNumero);
+
 
             panel1.Controls.Add(pnlPrincipal);
         }
@@ -56,6 +69,10 @@ public partial class Paginas_Default3 : System.Web.UI.Page
     {
         if (!Page.IsPostBack)
         {
+            txtDataEntrada.Text = DateTime.Now.Date.ToString("yyyy-MM-dd");
+            txtDataSaida.Text = DateTime.Now.Date.ToString("yyyy-MM-dd");
+
+
             int qtdReservas = ReservaDB.CountReservasAtivas();
             lbNovasReservas.Text = Convert.ToString(qtdReservas);
 
@@ -79,6 +96,11 @@ public partial class Paginas_Default3 : System.Web.UI.Page
         gerarBotoes("Disponível", "fa-thumbs-o-up");
     }
 
+    protected void lbReservados_Click(object sender, EventArgs e)
+    {
+        gerarBotoes("Reservado", "fa-calendar-check-o");
+    }
+
     protected void lbCheckin_Click(object sender, EventArgs e)
     {
         gerarBotoes("Ocupado", "fa-bed");
@@ -99,8 +121,4 @@ public partial class Paginas_Default3 : System.Web.UI.Page
         gerarBotoes("Limpo", "fa-bookmark-o");
     }
 
-    protected void lbReservados_Click(object sender, EventArgs e)
-    {
-        gerarBotoes("Reservado", "fa-calendar-check-o");
-    }
 }
